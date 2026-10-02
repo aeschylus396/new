@@ -4,8 +4,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const portfolioItems = [
-  { id: 4, title: "Promotional Reel", category: "AIC BIMTECH", type: "Video Editing", img: "/work/POSTERS/video editing/ayush new videeo .mp4", isVideo: true },
-  { id: 6, title: "Instagram Content", category: "SOCIAL MEDIA", type: "Social Media Post", img: "/work/POSTERS/INTERNSHIP/Telegram Desktop/image.png" },
+  { id: 4, title: "Promotional Reel", category: "AIC BIMTECH", type: "Video Editing", img: "/work/POSTERS/video editing/ayush-new-video.mp4", isVideo: true },
   { id: 7, title: "Ganesh Chaturthi Post", category: "AIC BIMTECH", type: "LinkedIn Graphic", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post).png" },
   { id: 8, title: "AIC Engagement Post 1", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post) (2).png" },
   { id: 9, title: "AIC Engagement Post 2", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post) (3).png" },
@@ -43,19 +42,19 @@ export default function PortfolioContent() {
       />
 
       {/* Floating Glass Navigation */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40 glass-nav rounded-full px-2 py-2 hidden md:flex items-center gap-1">
+      <nav className="fixed bottom-6 md:bottom-auto md:top-6 left-1/2 -translate-x-1/2 z-50 glass-nav rounded-full px-2 py-2 flex items-center gap-1 overflow-x-auto max-w-[90vw] md:max-w-none no-scrollbar shadow-2xl border border-white/10">
         {["about", "experience", "work", "projects", "achievements", "contact"].map((navItem) => (
           <a 
             key={navItem} 
             href={`#${navItem}`} 
-            className="px-5 py-2.5 rounded-full text-[11px] font-bold tracking-[0.15em] uppercase text-muted hover:text-foreground hover:bg-white/5 transition-all duration-300"
+            className="px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[9px] md:text-[11px] font-bold tracking-[0.15em] uppercase text-muted hover:text-foreground hover:bg-white/10 transition-all duration-300 whitespace-nowrap flex-shrink-0"
           >
             {navItem}
           </a>
         ))}
       </nav>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 space-y-48 mt-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 space-y-24 md:space-y-48 mt-16 md:mt-32">
         
         {/* ABOUT ME */}
         <motion.section 
@@ -73,7 +72,7 @@ export default function PortfolioContent() {
               <span className="w-8 h-px bg-accent-blue/50"></span> Profile
             </h2>
             <h3 className="font-heading heading-tight text-3xl md:text-5xl font-medium leading-[1.2] mb-8 text-foreground">
-              I am <span className="font-bold text-gradient">Ayush Lal</span>, a PGDM student at BIMTECH with hands-on experience across <span className="text-gradient-accent">digital marketing, sales,</span> lead generation, and creative content.
+              I am <span className="font-bold text-gradient">Ayush Lal</span>, a PGDM student at BIMTECH specializing in <span className="text-gradient-accent">digital marketing and sales strategy.</span> I bridge the gap between creative content and data-driven lead generation to drive real business growth.
             </h3>
             <p className="text-lg text-muted leading-relaxed max-w-2xl font-light">
               My experience spans campaign execution, customer acquisition, market research, content creation and business development. I enjoy working at the intersection of Marketing, Sales, Creativity, Consumer Behaviour, and Digital Growth.
@@ -282,7 +281,7 @@ export default function PortfolioContent() {
                 >
                   <div className="relative rounded-2xl overflow-hidden bg-black/50 aspect-auto">
                     {item.isVideo ? (
-                      <video src={item.img} className="w-full h-auto opacity-70 group-hover:opacity-100 transition-opacity duration-700" muted loop playsInline onMouseEnter={(e) => e.currentTarget.play()} onMouseLeave={(e) => e.currentTarget.pause()} />
+                      <video src={item.img} preload="metadata" className="w-full h-auto opacity-70 group-hover:opacity-100 transition-opacity duration-700" muted loop playsInline onMouseEnter={(e) => e.currentTarget.play()} onMouseLeave={(e) => e.currentTarget.pause()} />
                     ) : item.img.endsWith('.pdf') ? (
                       <div className="w-full aspect-[3/4] flex items-center justify-center">
                          <span className="glass-pill !text-[10px]">PDF Document</span>
@@ -332,7 +331,7 @@ export default function PortfolioContent() {
                 <div className="w-full md:w-[65%] bg-black/40 flex items-center justify-center p-4 md:p-8 h-[40vh] md:h-[80vh] relative">
                   <div className="absolute inset-0 bg-noise opacity-50 mix-blend-overlay pointer-events-none"></div>
                   {selectedItem.isVideo ? (
-                    <video src={selectedItem.img} controls autoPlay className="max-w-full max-h-full rounded-2xl shadow-2xl relative z-10" />
+                    <video src={selectedItem.img} preload="metadata" controls autoPlay className="max-w-full max-h-full rounded-2xl shadow-2xl relative z-10" />
                   ) : selectedItem.img.endsWith('.pdf') ? (
                     <embed src={selectedItem.img} type="application/pdf" className="w-full h-full rounded-2xl relative z-10" />
                   ) : (

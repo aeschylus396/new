@@ -17,6 +17,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Ayush Lal — Digital Strategy & Creative Execution",
   description: "Premium digital portfolio showcasing marketing strategy, sales execution, and creative direction.",
+  manifest: "/manifest.json",
+  themeColor: "#121212",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Ayush Lal",
+  },
 };
 
 export default function RootLayout({

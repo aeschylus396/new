@@ -15,14 +15,14 @@ export default function Home() {
 
   return (
     <main className="bg-[#121212]">
-      {/* Fixed global background canvas that stays visible everywhere */}
-      <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none opacity-50">
+      {/* Fixed global background canvas that stays visible everywhere - Hidden on mobile for performance */}
+      <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none opacity-50 hidden md:block">
         <ScrollyCanvas scrollYProgress={scrollYProgress} />
       </div>
 
-      {/* 500vh container for the scroll-linked animation overlay */}
-      <div ref={containerRef} className="relative h-[500vh] z-10">
-        {/* Sticky container that stays in view during the 500vh scroll */}
+      {/* Responsive height container for the scroll-linked animation overlay */}
+      <div ref={containerRef} className="relative h-[400vh] md:h-[500vh] z-10">
+        {/* Sticky container that stays in view during the scroll */}
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <Overlay scrollYProgress={scrollYProgress} />
         </div>

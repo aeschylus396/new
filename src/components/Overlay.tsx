@@ -74,7 +74,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
             </motion.div>
 
             <motion.div style={{ scale: nameScale, opacity: nameOpacity, originX: 0, originY: 0.5 }}>
-              <h1 className="font-heading heading-tight text-[clamp(4.5rem,8vw,7rem)] font-bold leading-[1.05] mb-4 text-gradient tracking-tight">
+              <h1 className="font-heading heading-tight text-[clamp(2.5rem,10vw,7rem)] md:text-[clamp(4.5rem,8vw,7rem)] font-bold leading-[1.05] mb-4 text-gradient tracking-tight">
                 Ayush <span className="text-gradient-accent">Lal</span>
               </h1>
               <p className="text-lg md:text-xl text-muted max-w-lg leading-relaxed font-light">
@@ -85,14 +85,14 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
         </div>
 
         {/* Bottom Area: Stats and CTAs pushed to the bottom corners */}
-        <div className="w-full max-w-[1600px] mx-auto px-8 md:px-12 pb-16 flex flex-col md:flex-row justify-between items-end gap-8 relative z-10">
+        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-12 pb-24 md:pb-16 flex flex-col-reverse md:flex-row justify-between items-center md:items-end gap-8 relative z-10">
           
           {/* Bottom Left: CTAs */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap gap-4 pointer-events-auto"
+            className="flex flex-wrap gap-4 pointer-events-auto items-center justify-center md:justify-start w-full md:w-auto"
           >
             <a
               href="#work"
@@ -119,7 +119,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col gap-3 items-end"
+            className="flex flex-col gap-3 items-center md:items-end w-full md:w-auto"
           >
             {[
               { icon: <MegaphoneIcon />, label: "Digital Campaigns", color: "text-accent-blue" },
@@ -150,7 +150,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
               Strategic Process
             </div>
 
-            <h2 className="font-heading heading-tight text-5xl md:text-7xl font-bold leading-[1.1] text-gradient">
+            <h2 className="font-heading heading-tight text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-gradient">
               Research.<br />
               <span className="text-gradient-warm">Qualify.</span><br />
               Convert.
@@ -161,7 +161,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
             </p>
 
             {/* Process steps pushed to the left corner block */}
-            <div className="grid grid-cols-2 gap-4 pt-6 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 md:pt-6 w-full">
               {[
                 { step: "01", label: "Understand", desc: "Customer & Market" },
                 { step: "02", label: "Strategize", desc: "Channel & Message" },
@@ -197,7 +197,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
               <span className="text-accent-cyan ml-2"><ChartIcon /></span>
             </div>
 
-            <h2 className="font-heading heading-tight text-5xl md:text-7xl font-bold leading-[1.1] text-gradient">
+            <h2 className="font-heading heading-tight text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-gradient">
               Design that<br />
               <span className="text-gradient-accent">performs.</span>
             </h2>
@@ -207,7 +207,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
             </p>
 
             {/* Metric cards arranged on the right */}
-            <div className="grid grid-cols-2 gap-6 pt-6 w-full text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pt-4 md:pt-6 w-full text-center">
               {[
                 { value: "3K+", label: "Qualified Leads", color: "text-accent-blue" },
                 { value: "16%", label: "Lead Conversion", color: "text-accent-cyan" },
@@ -238,7 +238,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
             Open to Opportunities
           </div>
 
-          <h2 className="font-heading heading-tight text-5xl md:text-7xl font-bold leading-[1.05] text-gradient">
+          <h2 className="font-heading heading-tight text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-gradient">
             Let's build<br />
             <span className="text-gradient-accent">something great.</span>
           </h2>
