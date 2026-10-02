@@ -4,14 +4,14 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const portfolioItems = [
-  { id: 4, title: "Promotional Reel", category: "AIC BIMTECH", type: "Video Editing", img: "/work/POSTERS/video editing/ayush-new-video.mp4", isVideo: true },
-  { id: 7, title: "Ganesh Chaturthi Post", category: "AIC BIMTECH", type: "LinkedIn Graphic", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post).png" },
-  { id: 8, title: "AIC Engagement Post 1", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post) (2).png" },
-  { id: 9, title: "AIC Engagement Post 2", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post) (3).png" },
-  { id: 10, title: "AIC Engagement Post 3", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post) (4).png" },
-  { id: 11, title: "AIC Engagement Post 4", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post) (5).png" },
-  { id: 12, title: "AIC Engagement Post 5", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post) (6).png" },
-  { id: 13, title: "AIC Engagement Post 6", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post) (7).png" },
+  { id: 4, title: "Promotional Reel", category: "AIC BIMTECH", type: "Video Editing", img: "/work/POSTERS/video%20editing/ayush-new-video.mp4", isVideo: true },
+  { id: 7, title: "Ganesh Chaturthi Post", category: "AIC BIMTECH", type: "LinkedIn Graphic", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post).png" },
+  { id: 8, title: "AIC Engagement Post 1", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(2).png" },
+  { id: 9, title: "AIC Engagement Post 2", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(3).png" },
+  { id: 10, title: "AIC Engagement Post 3", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(4).png" },
+  { id: 11, title: "AIC Engagement Post 4", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(5).png" },
+  { id: 12, title: "AIC Engagement Post 5", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(6).png" },
+  { id: 13, title: "AIC Engagement Post 6", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(7).png" },
 ];
 
 const filters = ["ALL", "MARKETING", "SALES", "POSTERS", "SOCIAL MEDIA", "AIC BIMTECH", "E-CELL", "VIDEO", "INTERNSHIP"];
