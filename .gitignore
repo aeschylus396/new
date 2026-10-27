@@ -36,6 +36,12 @@ next-env.d.ts
 
 # large media
 *.mp4
+!public/work/POSTERS/video editing/ayush-reel-optimized.mp4
+
+# pwa generated
+public/sw.js
+public/workbox-*.js
+public/sweetalert2.all.min.js
 
 # local files
 certificate/

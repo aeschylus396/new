@@ -1,20 +1,21 @@
 "use client";
 
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const portfolioItems = [
   { id: 14, title: "Aesthetic Touch Hospital", category: "HEALTHCARE", type: "Healthcare Branding & Social Media", img: "/work/aesthetic-touch.jpg", link: "https://www.instagram.com/drshubhamplasticsurgeon/" },
   { id: 15, title: "Digimark Globals", category: "MARKETING", type: "Digital Marketing & Brand Reach", img: "/illustrations/funnel.jpg", link: "https://www.instagram.com/digimarkglobals/" },
-  { id: 16, title: "E-Cell BIMTECH Campaigns", category: "E-CELL", type: "Social Media & Creativity Team", img: "/work/POSTERS/ECELL/ChatGPT%20Image%20Aug%2014,%202026,%2003_48_03%20PM.jpg", link: "https://www.instagram.com/ecell_bimtech/" },
-  { id: 4, title: "Promotional Reel", category: "AIC BIMTECH", type: "Video Editing", img: "/work/POSTERS/video%20editing/ayush-new-video.mp4", isVideo: true },
-  { id: 7, title: "Ganesh Chaturthi Post", category: "AIC BIMTECH", type: "LinkedIn Graphic", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post).jpg" },
-  { id: 8, title: "AIC Engagement Post 1", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(2).jpg" },
-  { id: 9, title: "AIC Engagement Post 2", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(3).jpg" },
-  { id: 10, title: "AIC Engagement Post 3", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(4).jpg" },
-  { id: 11, title: "AIC Engagement Post 4", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(5).jpg" },
-  { id: 12, title: "AIC Engagement Post 5", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(6).jpg" },
-  { id: 13, title: "AIC Engagement Post 6", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(7).jpg" },
+  { id: 16, title: "Raksha Bandhan Campaign", category: "E-CELL", type: "Social Media Creative", img: "/work/POSTERS/ECELL/ChatGPT%20Image%20Aug%2014,%202026,%2004_40_28%20PM.jpg", link: "https://www.instagram.com/ecell_bimtech/" },
+  { id: 17, title: "National Sports Day", category: "E-CELL", type: "Social Media Creative", img: "/work/POSTERS/ECELL/ChatGPT%20Image%20Aug%2020,%202026,%2001_47_28%20PM.jpg", link: "https://www.instagram.com/ecell_bimtech/" },
+  { id: 4, title: "AIC BIMTECH Promotional Reel", category: "AIC BIMTECH", type: "Video Editing & Direction", img: "/work/POSTERS/video%20editing/ayush-reel-optimized.mp4", poster: "/work/POSTERS/video%20editing/ayush-reel-poster.jpg", isVideo: true },
+  { id: 7, title: "Happy Durga Ashtami", category: "AIC BIMTECH", type: "LinkedIn Graphic", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post).jpg" },
+  { id: 8, title: "Ganesh Chaturthi Post", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(2).jpg" },
+  { id: 9, title: "World Mental Health Day", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(3).jpg" },
+  { id: 10, title: "Durga Ashtami Creative", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(4).jpg" },
+  { id: 11, title: "Happy Dussehra", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(5).jpg" },
+  { id: 12, title: "United Nations Day", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(6).jpg" },
+  { id: 13, title: "Happy Diwali", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(7).jpg" },
 ];
 
 const filters = ["ALL", "MARKETING", "SALES", "POSTERS", "SOCIAL MEDIA", "HEALTHCARE", "AIC BIMTECH", "E-CELL", "VIDEO", "INTERNSHIP"];
@@ -22,6 +23,67 @@ const filters = ["ALL", "MARKETING", "SALES", "POSTERS", "SOCIAL MEDIA", "HEALTH
 export default function PortfolioContent() {
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [selectedItem, setSelectedItem] = useState<any>(null);
+
+  // Big Featured Video Showcase State
+  const showcaseVideoRef = useRef<HTMLVideoElement>(null);
+  const [showcasePlaying, setShowcasePlaying] = useState(true);
+  const [showcaseMuted, setShowcaseMuted] = useState(true);
+  const [showcaseProgress, setShowcaseProgress] = useState(0);
+  const [showcaseTime, setShowcaseTime] = useState({ current: "0:00", duration: "1:10" });
+
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  };
+
+  const handleTimeUpdate = () => {
+    if (showcaseVideoRef.current) {
+      const cur = showcaseVideoRef.current.currentTime;
+      const dur = showcaseVideoRef.current.duration || 70.78;
+      setShowcaseProgress((cur / dur) * 100);
+      setShowcaseTime({
+        current: formatTime(cur),
+        duration: formatTime(dur)
+      });
+    }
+  };
+
+  const toggleShowcasePlay = () => {
+    if (showcaseVideoRef.current) {
+      if (showcasePlaying) {
+        showcaseVideoRef.current.pause();
+        setShowcasePlaying(false);
+      } else {
+        showcaseVideoRef.current.play();
+        setShowcasePlaying(true);
+      }
+    }
+  };
+
+  const toggleShowcaseMute = () => {
+    if (showcaseVideoRef.current) {
+      showcaseVideoRef.current.muted = !showcaseMuted;
+      setShowcaseMuted(!showcaseMuted);
+    }
+  };
+
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (showcaseVideoRef.current) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      const dur = showcaseVideoRef.current.duration || 70.78;
+      showcaseVideoRef.current.currentTime = pos * dur;
+    }
+  };
+
+  const handleFullscreen = () => {
+    if (showcaseVideoRef.current) {
+      if (showcaseVideoRef.current.requestFullscreen) {
+        showcaseVideoRef.current.requestFullscreen();
+      }
+    }
+  };
   
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -300,9 +362,188 @@ export default function PortfolioContent() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-xs text-accent-blue tracking-[0.2em] uppercase mb-10 flex items-center gap-4 font-bold">
-            <span className="w-8 h-px bg-accent-blue/50"></span> Creative Execution
-          </h2>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div>
+              <h2 className="text-xs text-accent-blue tracking-[0.2em] uppercase mb-3 flex items-center gap-4 font-bold">
+                <span className="w-8 h-px bg-accent-blue/50"></span> Creative Execution
+              </h2>
+              <h3 className="text-2xl md:text-4xl font-heading font-bold text-foreground">
+                Visual Content & <span className="text-gradient-accent">Video Production</span>
+              </h3>
+            </div>
+            <span className="text-xs text-muted font-light">Campaigns • Posters • Reels • Digital Graphics</span>
+          </div>
+
+          {/* BIG FEATURED VIDEO PRODUCTION SHOWCASE */}
+          <div className="glass-panel rounded-[2.5rem] p-6 md:p-12 border border-white/10 mb-16 relative overflow-hidden">
+            {/* Ambient glowing background */}
+            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-accent-blue/15 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent-purple/15 blur-[100px] rounded-full pointer-events-none" />
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+              
+              {/* Large Video Reel Container */}
+              <div className="lg:col-span-5 flex justify-center">
+                <div className="relative w-full max-w-[340px] aspect-[9/16] rounded-[2rem] overflow-hidden bg-black shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] border-2 border-white/15 group">
+                  
+                  <video
+                    ref={showcaseVideoRef}
+                    src="/work/POSTERS/video%20editing/ayush-reel-optimized.mp4"
+                    poster="/work/POSTERS/video%20editing/ayush-reel-poster.jpg"
+                    playsInline
+                    autoPlay
+                    muted={showcaseMuted}
+                    loop
+                    preload="auto"
+                    onTimeUpdate={handleTimeUpdate}
+                    onClick={toggleShowcasePlay}
+                    className="w-full h-full object-cover cursor-pointer"
+                  />
+
+                  {/* Tap overlay play/pause icon */}
+                  <div 
+                    onClick={toggleShowcasePlay}
+                    className={`absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity duration-300 cursor-pointer ${showcasePlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
+                  >
+                    <div className="w-16 h-16 rounded-full glass-panel flex items-center justify-center shadow-glow border border-white/30 text-white transform group-hover:scale-110 transition-transform">
+                      {showcasePlaying ? (
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+                      ) : (
+                        <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Top Badges */}
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                    <span className="glass-pill !py-1 !px-3 !text-[9px] font-bold text-accent-cyan border-accent-cyan/30 !bg-black/40 backdrop-blur-md">
+                      ● 1080×1920 HD REEL
+                    </span>
+                    <span className="glass-pill !py-1 !px-2.5 !text-[9px] font-medium text-white/80 !bg-black/40 backdrop-blur-md">
+                      {showcaseTime.current} / {showcaseTime.duration}
+                    </span>
+                  </div>
+
+                  {/* Bottom Interactive Glass Bar */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/95 via-black/70 to-transparent pt-8">
+                    {/* Progress Bar / Scrubber */}
+                    <div 
+                      onClick={handleSeek}
+                      className="w-full h-1.5 bg-white/20 rounded-full mb-3 cursor-pointer overflow-hidden relative group/scrub"
+                      title="Click to seek"
+                    >
+                      <div 
+                        className="h-full bg-gradient-to-r from-accent-blue via-accent-purple to-accent-cyan transition-all duration-100"
+                        style={{ width: `${showcaseProgress}%` }}
+                      />
+                    </div>
+
+                    <div className="flex items-center justify-between gap-2">
+                      <button
+                        onClick={toggleShowcasePlay}
+                        className="glass-pill !py-1.5 !px-3 !text-[10px] text-white flex items-center gap-1.5 hover:bg-white/20 transition-all"
+                      >
+                        {showcasePlaying ? "Pause" : "Play"}
+                      </button>
+
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={toggleShowcaseMute}
+                          className={`glass-pill !py-1.5 !px-3 !text-[10px] flex items-center gap-1.5 transition-all ${!showcaseMuted ? 'text-accent-cyan border-accent-cyan/40 !bg-accent-cyan/10' : 'text-white/80'}`}
+                          title={showcaseMuted ? "Click to enable sound" : "Sound enabled"}
+                        >
+                          {!showcaseMuted ? (
+                            <>
+                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                              <span>Sound ON</span>
+                            </>
+                          ) : (
+                            <>
+                              <svg className="w-3.5 h-3.5 text-accent-cyan" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>
+                              <span>Tap for Sound</span>
+                            </>
+                          )}
+                        </button>
+
+                        <button
+                          onClick={handleFullscreen}
+                          className="glass-pill !p-1.5 hover:text-white"
+                          title="Fullscreen"
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Video Metadata & Information */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="glass-pill !text-[10px] !py-1 !px-3 font-bold text-accent-blue border-accent-blue/30 !bg-accent-blue/10">
+                    ★ Featured Video Production
+                  </span>
+                  <span className="glass-pill !text-[10px] !py-1 !px-3 text-muted">
+                    AIC-BIMTECH Incubation
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-3 leading-tight">
+                    Startup Ecosystem <br className="hidden md:block"/>
+                    <span className="text-gradient-accent">Promotional Campaign Reel</span>
+                  </h3>
+                  <p className="text-sm md:text-base text-muted font-light leading-relaxed">
+                    Directed and edited dynamic promotional campaign reel for Atal Incubation Centre (AIC-BIMTECH). Designed for high-retention short-form digital consumption with rapid narrative transitions, audio-driven beat cuts, and real startup ecosystem storytelling.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
+                  <div className="glass-panel p-4 rounded-2xl">
+                    <p className="text-[10px] text-accent-cyan uppercase tracking-widest font-bold mb-1">Format</p>
+                    <p className="text-sm font-semibold text-foreground">9:16 Vertical Reel</p>
+                  </div>
+                  <div className="glass-panel p-4 rounded-2xl">
+                    <p className="text-[10px] text-accent-purple uppercase tracking-widest font-bold mb-1">Duration</p>
+                    <p className="text-sm font-semibold text-foreground">01:10 Full Cut</p>
+                  </div>
+                  <div className="glass-panel p-4 rounded-2xl col-span-2 sm:col-span-1">
+                    <p className="text-[10px] text-accent-green uppercase tracking-widest font-bold mb-1">Performance</p>
+                    <p className="text-sm font-semibold text-foreground">Instant HD Stream</p>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <p className="text-[10px] uppercase tracking-widest text-muted font-bold mb-3">Core Skills & Tools</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Video Editing", "Creative Direction", "Motion Pacing", "Audio Sync", "Social Media Strategy", "Reels & Shorts"].map(tag => (
+                      <span key={tag} className="glass-pill !text-[10px] !py-1 !px-3">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-wrap gap-4">
+                  <button
+                    onClick={toggleShowcaseMute}
+                    className="glass-pill !py-3 !px-6 text-xs font-bold text-white hover:bg-white/10 flex items-center gap-2 border-accent-cyan/40 shadow-glow"
+                  >
+                    {showcaseMuted ? "🔊 Play with Sound" : "🔇 Mute Audio"}
+                  </button>
+                  <button
+                    onClick={() => setSelectedItem(portfolioItems.find(i => i.id === 4))}
+                    className="glass-pill !py-3 !px-6 text-xs font-bold text-muted hover:text-white flex items-center gap-2"
+                  >
+                    <span>Open Full Cinema Modal ↗</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
           
           <div className="flex flex-wrap gap-2 mb-12">
             {filters.map(f => (
@@ -332,7 +573,24 @@ export default function PortfolioContent() {
                 >
                   <div className="relative rounded-2xl overflow-hidden bg-black/50 aspect-auto">
                     {item.isVideo ? (
-                      <video src={item.img} preload="none" className="w-full h-auto opacity-70 group-hover:opacity-100 transition-opacity duration-700" muted loop playsInline onMouseEnter={(e) => e.currentTarget.play()} onMouseLeave={(e) => e.currentTarget.pause()} />
+                      <div className="relative aspect-[9/16] bg-black rounded-2xl overflow-hidden">
+                        <video 
+                          src={item.img} 
+                          poster={item.poster || "/work/POSTERS/video%20editing/ayush-reel-poster.jpg"} 
+                          preload="auto" 
+                          muted 
+                          loop 
+                          playsInline 
+                          className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700" 
+                          onMouseEnter={(e) => { e.currentTarget.play().catch(() => {}); }} 
+                          onMouseLeave={(e) => e.currentTarget.pause()} 
+                        />
+                        <div className="absolute top-3 left-3 pointer-events-none">
+                          <span className="glass-pill !py-1 !px-2.5 !text-[9px] !bg-black/60 font-bold text-accent-cyan border-accent-cyan/40">
+                            ▶ VIDEO REEL (01:10)
+                          </span>
+                        </div>
+                      </div>
                     ) : item.img.endsWith('.pdf') ? (
                       <div className="w-full aspect-[3/4] flex items-center justify-center">
                          <span className="glass-pill !text-[10px]">PDF Document</span>
@@ -379,10 +637,18 @@ export default function PortfolioContent() {
                 className="w-full max-w-6xl max-h-[90vh] glass-panel rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-[0_32px_80px_rgba(0,0,0,0.8)] border border-white/10"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="w-full md:w-[65%] bg-black/40 flex items-center justify-center p-4 md:p-8 h-[40vh] md:h-[80vh] relative">
+                <div className="w-full md:w-[65%] bg-black/40 flex items-center justify-center p-4 md:p-8 h-[50vh] md:h-[80vh] relative">
                   <div className="absolute inset-0 bg-noise opacity-50 mix-blend-overlay pointer-events-none"></div>
                   {selectedItem.isVideo ? (
-                    <video src={selectedItem.img} preload="metadata" controls autoPlay className="max-w-full max-h-full rounded-2xl shadow-2xl relative z-10" />
+                    <video 
+                      src={selectedItem.img} 
+                      poster={selectedItem.poster || "/work/POSTERS/video%20editing/ayush-reel-poster.jpg"} 
+                      preload="auto" 
+                      controls 
+                      autoPlay 
+                      playsInline 
+                      className="max-h-full aspect-[9/16] object-contain rounded-2xl shadow-2xl relative z-10 border border-white/10" 
+                    />
                   ) : selectedItem.img.endsWith('.pdf') ? (
                     <embed src={selectedItem.img} type="application/pdf" className="w-full h-full rounded-2xl relative z-10" />
                   ) : (
