@@ -4,17 +4,20 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const portfolioItems = [
+  { id: 14, title: "Aesthetic Touch Hospital", category: "HEALTHCARE", type: "Healthcare Branding & Social Media", img: "/work/aesthetic-touch.jpg", link: "https://www.instagram.com/drshubhamplasticsurgeon/" },
+  { id: 15, title: "Digimark Globals", category: "MARKETING", type: "Digital Marketing & Brand Reach", img: "/illustrations/funnel.jpg", link: "https://www.instagram.com/digimarkglobals/" },
+  { id: 16, title: "E-Cell BIMTECH Campaigns", category: "E-CELL", type: "Social Media & Creativity Team", img: "/work/POSTERS/ECELL/ChatGPT%20Image%20Aug%2014,%202026,%2003_48_03%20PM.jpg", link: "https://www.instagram.com/ecell_bimtech/" },
   { id: 4, title: "Promotional Reel", category: "AIC BIMTECH", type: "Video Editing", img: "/work/POSTERS/video%20editing/ayush-new-video.mp4", isVideo: true },
-  { id: 7, title: "Ganesh Chaturthi Post", category: "AIC BIMTECH", type: "LinkedIn Graphic", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post).png" },
-  { id: 8, title: "AIC Engagement Post 1", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(2).png" },
-  { id: 9, title: "AIC Engagement Post 2", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(3).png" },
-  { id: 10, title: "AIC Engagement Post 3", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(4).png" },
-  { id: 11, title: "AIC Engagement Post 4", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(5).png" },
-  { id: 12, title: "AIC Engagement Post 5", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(6).png" },
-  { id: 13, title: "AIC Engagement Post 6", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(7).png" },
+  { id: 7, title: "Ganesh Chaturthi Post", category: "AIC BIMTECH", type: "LinkedIn Graphic", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post).jpg" },
+  { id: 8, title: "AIC Engagement Post 1", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(2).jpg" },
+  { id: 9, title: "AIC Engagement Post 2", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(3).jpg" },
+  { id: 10, title: "AIC Engagement Post 3", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(4).jpg" },
+  { id: 11, title: "AIC Engagement Post 4", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(5).jpg" },
+  { id: 12, title: "AIC Engagement Post 5", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(6).jpg" },
+  { id: 13, title: "AIC Engagement Post 6", category: "AIC BIMTECH", type: "Social Media Creative", img: "/work/POSTERS/ATAL%20INCUBATION%20CENTRE/Ganesh%20(LinkedIn%20Post)%20(7).jpg" },
 ];
 
-const filters = ["ALL", "MARKETING", "SALES", "POSTERS", "SOCIAL MEDIA", "AIC BIMTECH", "E-CELL", "VIDEO", "INTERNSHIP"];
+const filters = ["ALL", "MARKETING", "SALES", "POSTERS", "SOCIAL MEDIA", "HEALTHCARE", "AIC BIMTECH", "E-CELL", "VIDEO", "INTERNSHIP"];
 
 export default function PortfolioContent() {
   const [activeFilter, setActiveFilter] = useState("ALL");
@@ -216,26 +219,74 @@ export default function PortfolioContent() {
           <h2 className="text-xs text-accent-green tracking-[0.2em] uppercase mb-12 flex items-center gap-4 font-bold">
             <span className="w-8 h-px bg-accent-green/50"></span> Case Studies
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Aesthetic Touch Hospital */}
+            <div className="glass-panel rounded-3xl p-10 flex flex-col group relative overflow-hidden border-t-2 border-t-transparent hover:border-t-accent-cyan transition-all duration-500">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-accent-cyan/15 blur-[60px] rounded-full pointer-events-none transition-opacity opacity-50 group-hover:opacity-100"></div>
+              <div className="relative z-10 flex-grow flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <h3 className="text-2xl font-heading font-bold text-foreground">Aesthetic Touch</h3>
+                    <span className="glass-pill !text-[9px] !py-1 !px-2.5 text-accent-cyan border-accent-cyan/30">Hospital & Clinic</span>
+                  </div>
+                  <p className="text-[10px] text-accent-cyan font-bold uppercase tracking-[0.15em] mb-4">Dr. Shubham Sharma | Plastic & Aesthetic Surgery</p>
+                  <p className="text-sm text-muted leading-relaxed font-light mb-6">
+                    Orchestrated digital healthcare branding and social outreach for Aesthetic Touch Hospital and Dr. Shubham (MCh Plastic Surgery, PGIMER AIR 1). Drove patient acquisition and consult conversions through high-trust procedure reels, educational aesthetic content, and Instagram engagement strategy.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/5 flex items-center justify-between">
+                  <span className="text-[10px] text-muted font-medium">Healthcare Digital Growth</span>
+                  <a 
+                    href="https://www.instagram.com/drshubhamplasticsurgeon/" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="glass-pill !text-[10px] !py-1.5 !px-3 hover:text-white hover:bg-white/10 flex items-center gap-1.5 transition-all text-accent-cyan"
+                  >
+                    <span>Instagram ↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Digimark Globals */}
             <div className="glass-panel rounded-3xl p-10 flex flex-col group relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-accent-green/10 blur-[60px] rounded-full pointer-events-none transition-opacity opacity-50 group-hover:opacity-100"></div>
-              <div className="relative z-10 flex-grow">
-                <h3 className="text-2xl font-heading font-bold mb-3 text-foreground">Digimark Globals</h3>
-                <p className="text-[10px] text-accent-green font-bold uppercase tracking-[0.15em] mb-6">Marketing Project | Jul – Aug 2026</p>
-                <p className="text-sm text-muted leading-relaxed font-light">
-                  Improved brand visibility and audience engagement by analysing Instagram reach and engagement metrics to identify content opportunities and optimize promotional campaigns through reels, posters and digital content.
-                </p>
+              <div className="relative z-10 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl font-heading font-bold mb-3 text-foreground">Digimark Globals</h3>
+                  <p className="text-[10px] text-accent-green font-bold uppercase tracking-[0.15em] mb-6">Marketing Project | Jul – Aug 2026</p>
+                  <p className="text-sm text-muted leading-relaxed font-light">
+                    Improved brand visibility and audience engagement by analysing Instagram reach and engagement metrics to identify content opportunities and optimize promotional campaigns through reels, posters and digital content.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/5 flex items-center justify-between">
+                  <span className="text-[10px] text-muted font-medium">Social Media Analytics</span>
+                  <a 
+                    href="https://www.instagram.com/digimarkglobals/" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="glass-pill !text-[10px] !py-1.5 !px-3 hover:text-white hover:bg-white/10 flex items-center gap-1.5 transition-all text-accent-green"
+                  >
+                    <span>Instagram ↗</span>
+                  </a>
+                </div>
               </div>
             </div>
             
+            {/* Omnichannel Strategy */}
             <div className="glass-panel rounded-3xl p-10 flex flex-col group relative overflow-hidden">
               <div className="absolute top-0 right-0 w-48 h-48 bg-accent-blue/10 blur-[60px] rounded-full pointer-events-none transition-opacity opacity-50 group-hover:opacity-100"></div>
-              <div className="relative z-10 flex-grow">
-                <h3 className="text-2xl font-heading font-bold mb-3 text-foreground">Omnichannel Strategy</h3>
-                <p className="text-[10px] text-accent-blue font-bold uppercase tracking-[0.15em] mb-6">Lululemon | Forage | Dec 25 – Jan 26</p>
-                <p className="text-sm text-muted leading-relaxed font-light">
-                  Developed an integrated omnichannel strategy for Lululemon MIRROR by analysing customer journeys, leveraging digital transformation and hyperlocal insights to identify engagement opportunities and drive product adoption.
-                </p>
+              <div className="relative z-10 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl font-heading font-bold mb-3 text-foreground">Omnichannel Strategy</h3>
+                  <p className="text-[10px] text-accent-blue font-bold uppercase tracking-[0.15em] mb-6">Lululemon | Forage | Dec 25 – Jan 26</p>
+                  <p className="text-sm text-muted leading-relaxed font-light">
+                    Developed an integrated omnichannel strategy for Lululemon MIRROR by analysing customer journeys, leveraging digital transformation and hyperlocal insights to identify engagement opportunities and drive product adoption.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/5">
+                  <span className="text-[10px] text-muted font-medium">Customer Journey & Strategy</span>
+                </div>
               </div>
             </div>
           </div>
@@ -281,13 +332,13 @@ export default function PortfolioContent() {
                 >
                   <div className="relative rounded-2xl overflow-hidden bg-black/50 aspect-auto">
                     {item.isVideo ? (
-                      <video src={item.img} preload="metadata" className="w-full h-auto opacity-70 group-hover:opacity-100 transition-opacity duration-700" muted loop playsInline onMouseEnter={(e) => e.currentTarget.play()} onMouseLeave={(e) => e.currentTarget.pause()} />
+                      <video src={item.img} preload="none" className="w-full h-auto opacity-70 group-hover:opacity-100 transition-opacity duration-700" muted loop playsInline onMouseEnter={(e) => e.currentTarget.play()} onMouseLeave={(e) => e.currentTarget.pause()} />
                     ) : item.img.endsWith('.pdf') ? (
                       <div className="w-full aspect-[3/4] flex items-center justify-center">
                          <span className="glass-pill !text-[10px]">PDF Document</span>
                       </div>
                     ) : (
-                      <img src={item.img} alt={item.title} className="w-full h-auto object-contain opacity-70 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700" />
+                      <img src={item.img} alt={item.title} loading="lazy" decoding="async" className="w-full h-auto object-contain opacity-70 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700" />
                     )}
                     
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 pointer-events-none">
@@ -352,6 +403,18 @@ export default function PortfolioContent() {
                       <h4 className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-3 border-b border-white/10 pb-2">Execution</h4>
                       <p className="text-muted text-sm leading-relaxed font-light">Concept development, visual design, and format optimization for digital distribution.</p>
                     </div>
+                    {selectedItem.link && (
+                      <div className="pt-2">
+                        <a
+                          href={selectedItem.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="glass-pill !py-3 !px-6 text-accent-cyan hover:text-white flex items-center justify-center gap-2 text-xs font-bold border-accent-cyan/40 hover:bg-accent-cyan/10 transition-all shadow-glow"
+                        >
+                          <span>Open Instagram Profile ↗</span>
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -381,8 +444,18 @@ export default function PortfolioContent() {
               </div>
               <div className="h-px bg-white/5 w-full"></div>
               <div className="group">
-                <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-accent-purple transition-colors">E-Cell, BIMTECH</h3>
-                <p className="text-muted mb-3 mt-1 tracking-widest uppercase text-[10px] font-bold">Executive Member</p>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-accent-purple transition-colors">E-Cell, BIMTECH</h3>
+                  <a 
+                    href="https://www.instagram.com/ecell_bimtech/" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="glass-pill !text-[9px] !py-1 !px-2.5 text-accent-purple hover:text-white flex items-center gap-1 transition-all"
+                  >
+                    <span>@ecell_bimtech ↗</span>
+                  </a>
+                </div>
+                <p className="text-muted mb-3 mt-1 tracking-widest uppercase text-[10px] font-bold">Executive Member | Social Media & Creativity</p>
                 <p className="text-muted text-sm leading-relaxed font-light">Handled social media management and event organisation for E-Cell activities, coordinated promotion and contributed as part of the Creativity Team.</p>
               </div>
             </div>

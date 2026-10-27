@@ -15,8 +15,8 @@ export default function Home() {
 
   return (
     <main className="bg-[#121212]">
-      {/* Fixed global background canvas that stays visible everywhere - Hidden on mobile for performance */}
-      <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none opacity-50 hidden md:block">
+      {/* Fixed global background canvas that stays visible everywhere - optimized for mobile & desktop */}
+      <div className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden pointer-events-none opacity-40 md:opacity-50">
         <ScrollyCanvas scrollYProgress={scrollYProgress} />
       </div>
 

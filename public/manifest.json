@@ -1,0 +1,21 @@
+{
+  "name": "Ayush Lal Portfolio",
+  "short_name": "Portfolio",
+  "description": "Digital Marketing & Strategy Portfolio of Ayush Lal",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "icons": [
+    {
+      "src": "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post).png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/work/POSTERS/ATAL INCUBATION CENTRE/Ganesh (LinkedIn Post).png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
