@@ -531,7 +531,7 @@ export default function PortfolioContent() {
           
           <div className="relative z-10 glass-panel p-16 md:p-24 rounded-[3rem] border-white/10 mx-auto max-w-5xl">
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading heading-tight font-bold mb-6 text-foreground">
-              Let's create something <br/><span className="text-gradient-accent">extraordinary.</span>
+              Let&apos;s create something <br/><span className="text-gradient-accent">extraordinary.</span>
             </h2>
             <p className="text-base md:text-lg text-muted max-w-xl mx-auto mb-16 leading-relaxed font-light">
               Open to opportunities and conversations around digital marketing, sales, business development and creative content.

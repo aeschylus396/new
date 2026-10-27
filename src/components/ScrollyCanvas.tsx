@@ -29,13 +29,13 @@ export default function ScrollyCanvas({ scrollYProgress }: { scrollYProgress: an
       // Find closest loaded frame
       let closestIdx = 0;
       let minDiff = Infinity;
-      for (const idx of frames.keys()) {
+      frames.forEach((_, idx) => {
         const diff = Math.abs(idx - targetIdx);
         if (diff < minDiff) {
           minDiff = diff;
           closestIdx = idx;
         }
-      }
+      });
       img = frames.get(closestIdx);
     }
 

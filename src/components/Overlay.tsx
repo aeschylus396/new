@@ -239,7 +239,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
           </div>
 
           <h2 className="font-heading heading-tight text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-gradient">
-            Let's build<br />
+            Let&apos;s build<br />
             <span className="text-gradient-accent">something great.</span>
           </h2>
 
