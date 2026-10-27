@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -14,11 +14,14 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#121212",
+};
+
 export const metadata: Metadata = {
   title: "Ayush Lal — Digital Strategy & Creative Execution",
   description: "Premium digital portfolio showcasing marketing strategy, sales execution, and creative direction.",
   manifest: "/manifest.json",
-  themeColor: "#121212",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
