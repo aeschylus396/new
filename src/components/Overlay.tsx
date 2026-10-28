@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useTransform } from "framer-motion";
+import { motion, useTransform, MotionValue } from "framer-motion";
 
 /* ─────────── SVG ICONS ─────────── */
 const MegaphoneIcon = () => (
@@ -29,22 +29,22 @@ const RocketIcon = () => (
   </svg>
 );
 
-export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
+export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
   /* ── Section 1: Hero (0–20%) ── */
   const op1 = useTransform(scrollYProgress, [0, 0.12, 0.2], [1, 1, 0]);
   const y1 = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
   
   // Custom zoom out and transparency effect for the name
-  const nameScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.7]);
+  const nameScale = useTransform(scrollYProgress, [0, 0.15], [1, 0.75]);
   const nameOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   /* ── Section 2: Strategy (25–50%) ── */
   const op2 = useTransform(scrollYProgress, [0.2, 0.3, 0.42, 0.5], [0, 1, 1, 0]);
-  const y2 = useTransform(scrollYProgress, [0.2, 0.5], [60, -60]);
+  const y2 = useTransform(scrollYProgress, [0.2, 0.5], [50, -50]);
 
   /* ── Section 3: Results (55–80%) ── */
   const op3 = useTransform(scrollYProgress, [0.5, 0.6, 0.72, 0.8], [0, 1, 1, 0]);
-  const y3 = useTransform(scrollYProgress, [0.5, 0.8], [60, -60]);
+  const y3 = useTransform(scrollYProgress, [0.5, 0.8], [50, -50]);
 
   /* ── Section 4: CTA (85–100%) ── */
   const op4 = useTransform(scrollYProgress, [0.8, 0.88, 1], [0, 1, 1]);
@@ -61,42 +61,42 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
         <div className="ambient-glow ambient-blue w-[400px] h-[400px] -top-20 -left-20"></div>
 
         {/* Top Left: Name and Title */}
-        <div className="w-full max-w-[1600px] mx-auto px-5 sm:px-8 md:px-12 pt-12 sm:pt-20 md:pt-28 flex justify-start">
-          <div className="space-y-4 sm:space-y-6 max-w-2xl relative z-10">
+        <div className="w-full max-w-[1600px] mx-auto px-5 sm:px-8 md:px-12 pt-8 sm:pt-16 md:pt-24 flex justify-start">
+          <div className="space-y-3 sm:space-y-5 max-w-2xl relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="glass-pill"
+              transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="glass-pill !py-1 !px-3 sm:!py-1.5 sm:!px-4 !text-[11px] sm:!text-xs"
             >
-              <span className="w-2 h-2 rounded-full bg-accent-blue mr-2.5 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-accent-blue mr-2 animate-pulse" />
               Digital Marketing & Strategy
             </motion.div>
 
             <motion.div style={{ scale: nameScale, opacity: nameOpacity, originX: 0, originY: 0.5 }}>
-              <h1 className="font-heading heading-tight text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-3 sm:mb-4 text-gradient tracking-tight">
+              <h1 className="font-heading heading-tight text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-2 sm:mb-4 text-gradient tracking-tight">
                 Ayush <span className="text-gradient-accent">Lal</span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-slate-200 max-w-lg leading-relaxed font-normal">
+              <p className="text-sm sm:text-lg md:text-xl text-slate-200 max-w-lg leading-relaxed font-normal">
                 Turning strategy into scalable growth through high-converting campaigns, engaging creative content, and customer acquisition.
               </p>
             </motion.div>
           </div>
         </div>
 
-        {/* Bottom Area: Stats and CTAs pushed to the bottom corners */}
-        <div className="w-full max-w-[1600px] mx-auto px-5 sm:px-8 md:px-12 pb-20 sm:pb-24 md:pb-16 flex flex-col-reverse md:flex-row justify-between items-center md:items-end gap-6 sm:gap-8 relative z-10">
+        {/* Bottom Area: Stats and CTAs */}
+        <div className="w-full max-w-[1600px] mx-auto px-5 sm:px-8 md:px-12 pb-12 sm:pb-16 md:pb-16 flex flex-col-reverse md:flex-row justify-between items-center md:items-end gap-4 sm:gap-6 relative z-10">
           
           {/* Bottom Left: CTAs */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap gap-3 sm:gap-4 pointer-events-auto items-center justify-center md:justify-start w-full md:w-auto"
+            transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap gap-2.5 sm:gap-4 pointer-events-auto items-center justify-center md:justify-start w-full md:w-auto"
           >
             <a
               href="#work"
-              className="group relative px-6 sm:px-8 py-3.5 sm:py-4 rounded-full overflow-hidden text-xs font-bold tracking-widest uppercase text-white transition-all duration-500 shadow-glow"
+              className="group relative px-5 sm:px-8 py-3 sm:py-4 rounded-full overflow-hidden text-[11px] sm:text-xs font-bold tracking-widest uppercase text-white transition-all duration-500 shadow-glow"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-accent-blue to-accent-cyan rounded-full" />
               <span className="absolute inset-0 bg-gradient-to-r from-accent-cyan to-accent-blue rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -108,7 +108,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
               href="https://www.linkedin.com/in/ayush-lal-362646267/"
               target="_blank"
               rel="noreferrer"
-              className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs font-bold tracking-widest uppercase glass-panel text-slate-100 hover:text-white transition-all duration-300 flex items-center gap-2"
+              className="px-5 sm:px-8 py-3 sm:py-4 rounded-full text-[11px] sm:text-xs font-bold tracking-widest uppercase glass-panel text-slate-100 hover:text-white transition-all duration-300 flex items-center gap-2"
             >
               LinkedIn ↗
             </a>
@@ -118,15 +118,15 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.7, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-row md:flex-col gap-2 sm:gap-3 flex-wrap justify-center md:justify-end w-full md:w-auto"
+            transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-row md:flex-col gap-1.5 sm:gap-2.5 flex-wrap justify-center md:justify-end w-full md:w-auto"
           >
             {[
               { icon: <MegaphoneIcon />, label: "Digital Campaigns", color: "text-accent-blue" },
               { icon: <ChartIcon />, label: "3K+ Qualified Leads", color: "text-accent-cyan" },
               { icon: <TargetIcon />, label: "16% Conversion", color: "text-accent-purple" },
             ].map((item, i) => (
-              <div key={i} className="glass-panel px-3.5 sm:px-5 py-2 sm:py-3 rounded-2xl flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-100 font-medium backdrop-blur-xl">
+              <div key={i} className="glass-panel px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-xl sm:rounded-2xl flex items-center gap-2 text-[11px] sm:text-sm text-slate-100 font-medium backdrop-blur-xl">
                 <span className={`${item.color}`}>{item.icon}</span>
                 {item.label}
               </div>
@@ -144,8 +144,8 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
         <div className="ambient-glow ambient-purple w-[600px] h-[600px] top-1/4 -left-20"></div>
         <div className="w-full max-w-[1600px] mx-auto px-5 sm:px-8 md:px-12 flex justify-start">
           
-          <div className="space-y-6 sm:space-y-8 relative z-10 max-w-xl text-left">
-            <div className="glass-pill">
+          <div className="space-y-4 sm:space-y-6 md:space-y-8 relative z-10 max-w-xl text-left">
+            <div className="glass-pill !py-1 !px-3 sm:!py-1.5 sm:!px-4 !text-[11px] sm:!text-xs">
               <span className="text-accent-purple mr-2"><RocketIcon /></span>
               Strategic Process
             </div>
@@ -156,20 +156,20 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
               Convert.
             </h2>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed font-normal">
+            <p className="text-sm sm:text-lg md:text-xl text-slate-200 leading-relaxed font-normal">
               Building high-efficiency lead pipelines through deep market insights, omnichannel communication, and conversion-focused funnels.
             </p>
 
             {/* Process steps */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-2 sm:pt-4 w-full">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 pt-1 sm:pt-4 w-full">
               {[
                 { step: "01", label: "Understand", desc: "Customer & Market" },
                 { step: "02", label: "Strategize", desc: "Channel & Message" },
                 { step: "03", label: "Create", desc: "Content Campaigns" },
                 { step: "04", label: "Measure", desc: "Lead Conversion" },
               ].map((s, i) => (
-                <div key={i} className="glass-panel rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 group flex flex-col justify-between text-left border-l-2 border-l-transparent hover:border-l-accent-purple transition-colors">
-                  <div className="flex justify-between items-start mb-1.5 sm:mb-2">
+                <div key={i} className="glass-panel rounded-xl sm:rounded-2xl p-3 sm:p-4 group flex flex-col justify-between text-left border-l-2 border-l-transparent hover:border-l-accent-purple transition-colors">
+                  <div className="flex justify-between items-start mb-1">
                     <h4 className="text-xs sm:text-sm font-bold tracking-wide text-foreground">{s.label}</h4>
                     <span className="text-[10px] sm:text-xs font-heading font-bold text-slate-400 group-hover:text-accent-purple transition-colors">
                       {s.step}
@@ -191,8 +191,8 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
         <div className="ambient-glow ambient-cyan w-[600px] h-[600px] bottom-1/4 -right-20"></div>
         <div className="w-full max-w-[1600px] mx-auto px-5 sm:px-8 md:px-12 flex justify-start sm:justify-end">
           
-          <div className="space-y-6 sm:space-y-8 relative z-10 max-w-xl text-left sm:text-right flex flex-col items-start sm:items-end">
-            <div className="glass-pill">
+          <div className="space-y-4 sm:space-y-6 md:space-y-8 relative z-10 max-w-xl text-left sm:text-right flex flex-col items-start sm:items-end">
+            <div className="glass-pill !py-1 !px-3 sm:!py-1.5 sm:!px-4 !text-[11px] sm:!text-xs">
               Impact & Results
               <span className="text-accent-cyan ml-2"><ChartIcon /></span>
             </div>
@@ -202,22 +202,22 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
               <span className="text-gradient-accent">delivers results.</span>
             </h2>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed font-normal text-left sm:text-right">
+            <p className="text-sm sm:text-lg md:text-xl text-slate-200 leading-relaxed font-normal text-left sm:text-right">
               Connecting compelling visual storytelling with hard analytical performance — designed to attract, convert, and retain.
             </p>
 
             {/* Metric cards arranged cleanly */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 pt-2 sm:pt-4 w-full text-center">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 md:gap-6 pt-1 sm:pt-4 w-full text-center">
               {[
                 { value: "3K+", label: "Qualified Leads", color: "text-accent-blue" },
                 { value: "16%", label: "Lead Conversion", color: "text-accent-cyan" },
                 { value: "10%", label: "Revenue Lift", color: "text-accent-green" },
                 { value: "2", label: "Enterprise Clients", color: "text-accent-purple" },
               ].map((m, i) => (
-                <div key={i} className="glass-panel rounded-2xl sm:rounded-3xl p-4 sm:p-6 relative overflow-hidden group">
-                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full blur-[40px] opacity-10 group-hover:opacity-20 transition-opacity bg-current ${m.color}`} />
-                  <div className={`text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-1 sm:mb-2 tracking-tight relative z-10 ${m.color}`}>{m.value}</div>
-                  <p className="text-[10px] sm:text-xs text-slate-300 uppercase tracking-widest font-semibold relative z-10">{m.label}</p>
+                <div key={i} className="glass-panel rounded-xl sm:rounded-2xl p-3 sm:p-5 relative overflow-hidden group">
+                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full blur-[40px] opacity-10 group-hover:opacity-20 transition-opacity bg-current ${m.color}`} />
+                  <div className={`text-2xl sm:text-4xl md:text-5xl font-heading font-bold mb-1 tracking-tight relative z-10 ${m.color}`}>{m.value}</div>
+                  <p className="text-[9px] sm:text-xs text-slate-300 uppercase tracking-widest font-semibold relative z-10">{m.label}</p>
                 </div>
               ))}
             </div>
@@ -231,10 +231,10 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
         style={{ opacity: op4, y: y4 }}
       >
         <div className="ambient-glow ambient-blue w-[800px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20"></div>
-        <div className="text-center space-y-8 sm:space-y-10 max-w-3xl px-5 sm:px-8 relative z-10">
+        <div className="text-center space-y-6 sm:space-y-8 md:space-y-10 max-w-3xl px-5 sm:px-8 relative z-10">
           
-          <div className="glass-pill">
-            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse mr-2.5" />
+          <div className="glass-pill !py-1 !px-3 sm:!py-1.5 sm:!px-4 !text-[11px] sm:!text-xs">
+            <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse mr-2" />
             Open to Opportunities
           </div>
 
@@ -243,12 +243,12 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: any }) {
             <span className="text-gradient-accent">something exceptional.</span>
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl text-slate-200 max-w-xl mx-auto leading-relaxed font-normal">
+          <p className="text-sm sm:text-lg md:text-xl text-slate-200 max-w-xl mx-auto leading-relaxed font-normal">
             Scroll down to view detailed case studies, campaign metrics, video production, and creative execution.
           </p>
 
-          <div className="flex flex-col items-center gap-6 pt-4 sm:pt-6">
-            <div className="w-[1px] h-12 sm:h-16 bg-gradient-to-b from-white/30 to-transparent" />
+          <div className="flex flex-col items-center gap-4 pt-2 sm:pt-4">
+            <div className="w-[1px] h-10 sm:h-14 bg-gradient-to-b from-white/30 to-transparent" />
           </div>
         </div>
       </motion.div>
