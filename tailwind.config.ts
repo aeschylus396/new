@@ -9,17 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#030305", /* Deep cinematic black */
-        surface: "rgba(15, 18, 32, 0.45)",
-        surfaceHover: "rgba(25, 30, 48, 0.6)",
-        foreground: "#f4f4f5",
-        muted: "#a1a1aa",
-        "accent-blue": "#3b82f6",
-        "accent-cyan": "#06b6d4",
-        "accent-purple": "#8b5cf6",
-        "accent-green": "#10b981",
-        "glass-border": "rgba(255, 255, 255, 0.08)",
-        "glass-border-hover": "rgba(255, 255, 255, 0.15)",
+        background: "#0f1422", /* Modern illuminated slate */
+        surface: "rgba(255, 255, 255, 0.06)",
+        surfaceHover: "rgba(255, 255, 255, 0.10)",
+        foreground: "#f8fafc",
+        muted: "#94a3b8",
+        "accent-blue": "#38bdf8",
+        "accent-cyan": "#22d3ee",
+        "accent-purple": "#a855f7",
+        "accent-green": "#34d399",
+        "glass-border": "rgba(255, 255, 255, 0.12)",
+        "glass-border-hover": "rgba(255, 255, 255, 0.25)",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "system-ui", "sans-serif"],

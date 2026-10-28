@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#121212",
+  themeColor: "#0f1422",
 };
 
 export const metadata: Metadata = {
@@ -37,8 +37,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${plusJakarta.variable} ${inter.variable} font-body bg-background text-foreground antialiased selection:bg-accent-blue/30 selection:text-white relative`}>
-        {/* Global ambient noise overlay for texture */}
-        <div className="fixed inset-0 z-50 bg-noise pointer-events-none mix-blend-overlay"></div>
         {children}
       </body>
     </html>
