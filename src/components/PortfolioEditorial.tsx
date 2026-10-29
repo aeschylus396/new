@@ -239,7 +239,7 @@ export default function PortfolioEditorial() {
             </p>
 
             {/* 6-Grid Editorial Metadata (Directly styled like reference Frame 1) */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 pt-8 border-t border-crimson/25">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 pt-8 border-t border-crimson/25">
               
               <div className="p-4 border border-crimson/20 bg-cream">
                 <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-crimson block mb-1">
