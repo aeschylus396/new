@@ -1,42 +1,34 @@
 "use client";
 
-import { useRef } from "react";
-import { useScroll } from "framer-motion";
-import ScrollyCanvas from "@/components/ScrollyCanvas";
-import Overlay from "@/components/Overlay";
-import PortfolioContent from "@/components/PortfolioContent";
+import { motion, useScroll, useSpring } from "framer-motion";
+import NavbarEditorial from "@/components/NavbarEditorial";
+import HeroEditorial from "@/components/HeroEditorial";
+import PortfolioEditorial from "@/components/PortfolioEditorial";
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
   });
 
   return (
-    <main className="bg-[#0f1422] text-[#f8fafc] relative selection:bg-accent-blue/30 selection:text-white min-h-screen overflow-x-hidden">
-      {/* Fixed global background canvas - crisp, vibrant visibility on laptop and mobile */}
-      <div className="fixed top-0 left-0 w-full h-[100dvh] z-0 overflow-hidden pointer-events-none opacity-60 md:opacity-75">
-        <ScrollyCanvas scrollYProgress={scrollYProgress} />
-      </div>
+    <main className="bg-cream text-noir relative min-h-screen selection:bg-crimson selection:text-white">
+      {/* Top Editorial Reading Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[3px] bg-crimson origin-left z-[60]"
+        style={{ scaleX }}
+      />
 
-      {/* Radiant studio ambient rim lights - blends over the portrait with luminosity */}
-      <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(56,189,248,0.16),transparent)] z-0 mix-blend-screen" />
-      <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(circle_at_85%_35%,rgba(168,85,247,0.12),transparent)] z-0 mix-blend-screen" />
-      <div className="fixed inset-0 pointer-events-none bg-[radial-gradient(circle_at_15%_75%,rgba(34,211,238,0.09),transparent)] z-0 mix-blend-screen" />
+      {/* Minimal Top Navigation */}
+      <NavbarEditorial />
 
-      {/* Responsive height container for the scroll-linked animation overlay */}
-      <div ref={containerRef} className="relative h-[320vh] sm:h-[400vh] md:h-[480vh] z-10">
-        {/* Sticky container that stays in view during the scroll with mobile-safe dvh */}
-        <div className="sticky top-0 h-[100dvh] w-full overflow-hidden">
-          <Overlay scrollYProgress={scrollYProgress} />
-        </div>
-      </div>
+      {/* Chapter 00: Bold Crimson Hero Opening */}
+      <HeroEditorial />
 
-      {/* Content below the scroll animation */}
-      <div className="relative z-20">
-        <PortfolioContent />
-      </div>
+      {/* Chapters 01 to 08: Editorial Content & Interactive Features */}
+      <PortfolioEditorial />
     </main>
   );
 }

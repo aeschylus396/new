@@ -9,29 +9,47 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0f1422", /* Modern illuminated slate */
-        surface: "rgba(255, 255, 255, 0.06)",
-        surfaceHover: "rgba(255, 255, 255, 0.10)",
-        foreground: "#f8fafc",
-        muted: "#94a3b8",
-        "accent-blue": "#38bdf8",
-        "accent-cyan": "#22d3ee",
-        "accent-purple": "#a855f7",
-        "accent-green": "#34d399",
-        "glass-border": "rgba(255, 255, 255, 0.12)",
-        "glass-border-hover": "rgba(255, 255, 255, 0.25)",
+        // Red and cream signature editorial palette
+        crimson: {
+          DEFAULT: "#F20D3A",
+          dark: "#C8102E",
+          deep: "#9E0B25",
+          muted: "#E9A0AA",
+          soft: "rgba(242, 13, 58, 0.08)",
+        },
+        cream: {
+          DEFAULT: "#F5F0E7",
+          light: "#FAF7F2",
+          dark: "#EADFCF",
+          muted: "#E2D5C3",
+        },
+        noir: {
+          DEFAULT: "#151515",
+          deep: "#0B0B0B",
+          card: "#1C1C1C",
+          surface: "#242424",
+        },
+        // Semantic aliases
+        primary: "#F20D3A",
+        background: "#F5F0E7",
+        foreground: "#151515",
+        "border-red": "rgba(242, 13, 58, 0.35)",
+        "border-cream": "rgba(245, 240, 231, 0.25)",
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
-        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "'Bebas Neue'", "Impact", "sans-serif"],
+        heading: ["var(--font-heading)", "'Plus Jakarta Sans'", "sans-serif"],
+        body: ["var(--font-body)", "'Inter'", "sans-serif"],
+      },
+      letterSpacing: {
+        ultra: "0.25em",
+        mega: "0.35em",
       },
       boxShadow: {
-        glass: "0 24px 40px -8px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)",
-        "glass-hover": "0 32px 50px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.15)",
-        glow: "0 0 40px -10px rgba(59, 130, 246, 0.2)",
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        editorial: "0 20px 40px -15px rgba(242, 13, 58, 0.15)",
+        "editorial-dark": "0 20px 40px -15px rgba(0, 0, 0, 0.5)",
+        card: "0 10px 30px -5px rgba(0, 0, 0, 0.08)",
+        "card-red": "0 15px 35px -5px rgba(242, 13, 58, 0.25)",
       },
     },
   },

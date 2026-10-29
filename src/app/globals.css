@@ -1,144 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #0f1422;
-  --foreground: #f8fafc;
-  --muted: #94a3b8;
-  --accent-blue: #38bdf8;
-  --accent-cyan: #22d3ee;
-  --accent-purple: #a855f7;
-  --accent-green: #34d399;
+  --primary: #F20D3A;
+  --primary-dark: #C8102E;
+  --cream: #F5F0E7;
+  --cream-light: #FAF7F2;
+  --noir: #151515;
+  --muted-red: #E9A0AA;
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--cream);
+  color: var(--noir);
+  font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
-/* Base text rendering for high-end look */
+/* Base text rendering for high-end editorial look */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle clean texture */
+/* Selection colour */
+::selection {
+  background-color: #F20D3A;
+  color: #FFFFFF;
+}
+
+/* Subtle graphic noise texture */
 .bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
   pointer-events: none;
 }
 
-/* Radiant ambient glow system */
-.ambient-glow {
+/* Signature Editorial Frame - Notched corner framing from reference video */
+.editorial-frame {
+  position: relative;
+  border: 1px solid rgba(242, 13, 58, 0.4);
+  background: #FAF7F2;
+  transition: all 0.3s ease;
+}
+
+.editorial-frame-red {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: #F20D3A;
+  color: #FFFFFF;
+}
+
+.editorial-frame-noir {
+  position: relative;
+  border: 1px solid rgba(242, 13, 58, 0.4);
+  background: #151515;
+  color: #F5F0E7;
+}
+
+/* Inset Corner Notches */
+.corner-notch {
+  position: relative;
+}
+.corner-notch::before,
+.corner-notch::after {
+  content: '';
   position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  z-index: -1;
+  width: 8px;
+  height: 8px;
+  border-color: #F20D3A;
   pointer-events: none;
-  opacity: 0.28;
-  transform: translateZ(0);
+}
+.corner-notch::before {
+  top: 4px;
+  left: 4px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.corner-notch::after {
+  bottom: 4px;
+  right: 4px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
 }
 
-.ambient-blue { background: #38bdf8; }
-.ambient-purple { background: #a855f7; }
-.ambient-cyan { background: #22d3ee; }
-
-/* Premium Layered Frosted Glass System */
-.glass-panel {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* Editorial Inner Notch Card Border (Double line style from video) */
+.notched-card {
+  position: relative;
+  border: 1px solid rgba(242, 13, 58, 0.4);
+}
+.notched-card-inner {
+  margin: 6px;
+  border: 1px solid rgba(242, 13, 58, 0.2);
 }
 
-.glass-panel:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 100%);
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 24px 50px -12px rgba(56, 189, 248, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+/* Side guide rails - vertical metadata text */
+.rail-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  letter-spacing: 0.25em;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
-/* Navigation Glass */
-.glass-nav {
-  background: rgba(15, 20, 34, 0.85);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+/* Rotating stamp seal */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
 }
 
-/* Glass Pills (Tags/Labels) */
-.glass-pill {
+/* Editorial tag / bracket chip */
+.editorial-chip {
   display: inline-flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  padding: 0.375rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #e2e8f0;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-pill:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  border: 1px solid rgba(242, 13, 58, 0.35);
+  background: rgba(242, 13, 58, 0.05);
+  color: #F20D3A;
+  transition: all 0.25s ease;
 }
 
-/* Premium Typography Utilities */
-.heading-tight {
-  letter-spacing: -0.04em;
-}
-.heading-loose {
-  letter-spacing: -0.02em;
-}
-.text-gradient {
-  background: linear-gradient(180deg, #ffffff 10%, #e2e8f0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.text-gradient-accent {
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.text-gradient-warm {
-  background: linear-gradient(135deg, #a855f7 0%, #f472b6 50%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.editorial-chip-light {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
 }
 
-/* Focus outline for accessibility */
-*:focus-visible {
-  outline: 2px solid var(--accent-blue);
-  outline-offset: 4px;
-}
-
-/* Custom Scrollbar */
+/* Custom Scrollbar in crimson & cream */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-track { background: #F5F0E7; }
 ::-webkit-scrollbar-thumb { 
-  background: rgba(255, 255, 255, 0.1); 
-  border-radius: 3px; 
+  background: #F20D3A; 
+  border-radius: 0px; 
 }
-::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+::-webkit-scrollbar-thumb:hover { background: #C8102E; }
 
-/* Hide scrollbar for mobile navigation */
-.no-scrollbar::-webkit-scrollbar { 
-  display: none; 
-}
-.no-scrollbar { 
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
-}
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
