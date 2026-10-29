@@ -14,6 +14,7 @@ export default function SamuraiPillars() {
       title: "DIGITAL STRATEGY & ACQUISITION",
       subtitle: "Full-Funnel Campaign Architecture",
       metric: "3,000+ LEADS GENERATED",
+      metricLabel: "QUALIFIED PIPELINE",
       desc: "Architecting high-converting digital acquisition funnels across Meta Ads, Google Ads, SEO, and organic social media. Converting cold traffic into qualified prospective customers with surgical precision.",
       skills: ["Omnichannel Strategy", "Meta Ads Manager", "Google Ads", "Conversion Rate Optimization", "Audience Segmentation"],
     },
@@ -24,6 +25,7 @@ export default function SamuraiPillars() {
       title: "SALES LEADERSHIP & NEGOTIATION",
       subtitle: "B2B Deal Execution & Conversion",
       metric: "16% CONVERSION RATE",
+      metricLabel: "CLOSING EFFICIENCY",
       desc: "Executing disciplined consultative outreach, pipeline nurturing, and high-stakes negotiation. Bridging initial customer interest into signed enterprise contracts and sustainable 10% revenue expansion.",
       skills: ["Cold Calling & Emailing", "Consultative Selling", "Pipeline Velocity", "CRM Mastery", "Contract Negotiation"],
     },
@@ -34,6 +36,7 @@ export default function SamuraiPillars() {
       title: "CREATIVE & VIDEO PRODUCTION",
       subtitle: "High-Retention Visual Storytelling",
       metric: "1080×1920 HD PRODUCTION",
+      metricLabel: "DYNAMIC MEDIA REEL",
       desc: "Directing dynamic vertical reels, promotional posters, and social campaigns for Atal Incubation Centre (AIC-BIMTECH) and healthcare leaders. Engaging audiences with rapid narrative pacing and visual distinction.",
       skills: ["Video Direction & Editing", "Poster & Banner Design", "Visual Pacing", "Audio Sync", "Social Media Strategy"],
     },
@@ -64,65 +67,74 @@ export default function SamuraiPillars() {
           </p>
         </div>
 
-        {/* 3 Large Notched Cards (Inspired by Frames 9, 20 & 27) */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* 3 Perfectly Aligned Notched Editorial Cards (Inspired by Frames 9, 20 & 27) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           {pillars.map((pillar, i) => {
             const isActive = activePillar === i;
             return (
               <div
                 key={pillar.id}
                 onClick={() => setActivePillar(i)}
-                className={`editorial-frame p-6 sm:p-8 cursor-pointer transition-all duration-300 flex flex-col justify-between border-2 ${
+                className={`editorial-frame p-6 sm:p-8 cursor-pointer transition-colors duration-300 flex flex-col justify-between border-2 h-full ${
                   isActive
-                    ? "bg-crimson text-white border-crimson-dark shadow-editorial-dark scale-[1.02]"
-                    : "bg-cream-light text-noir border-crimson/40 hover:border-crimson"
+                    ? "bg-crimson text-white border-crimson shadow-editorial-dark"
+                    : "bg-cream-light text-noir border-crimson/40 hover:border-crimson hover:bg-white"
                 }`}
               >
-                <div>
-                  {/* Top Bar with Kamon Crest */}
-                  <div className="flex items-center justify-between mb-8 pb-4 border-b border-current border-opacity-20">
+                <div className="flex flex-col">
+                  {/* Top Bar with Kamon Crest & Tag - Fixed Height & Aligned */}
+                  <div className="flex items-center justify-between h-12 mb-6 pb-4 border-b border-current border-opacity-20">
                     <span className="font-mono text-[11px] font-bold tracking-widest uppercase">
                       {pillar.tag}
                     </span>
                     <KamonCrest
                       type={pillar.kamon}
-                      size={36}
+                      size={34}
                       color={isActive ? "#FFFFFF" : "#F20D3A"}
                     />
                   </div>
 
-                  {/* Pillar Title */}
-                  <h3 className="font-display text-3xl sm:text-4xl tracking-wide uppercase leading-tight mb-2">
-                    {pillar.title}
-                  </h3>
+                  {/* Pillar Title - Unified Height Across All 3 Cards */}
+                  <div className="min-h-[76px] sm:min-h-[84px] flex items-center mb-2">
+                    <h3 className="font-display text-3xl sm:text-4xl tracking-wide uppercase leading-tight">
+                      {pillar.title}
+                    </h3>
+                  </div>
                   
-                  <p className={`text-xs font-mono uppercase tracking-widest font-bold mb-6 ${
-                    isActive ? "text-cream" : "text-crimson"
-                  }`}>
-                    {pillar.subtitle}
-                  </p>
+                  {/* Subtitle - Fixed Height */}
+                  <div className="min-h-[24px] mb-5">
+                    <p className={`text-xs font-mono uppercase tracking-widest font-bold ${
+                      isActive ? "text-cream" : "text-crimson"
+                    }`}>
+                      {pillar.subtitle}
+                    </p>
+                  </div>
 
-                  {/* Quantitative Badge */}
-                  <div className={`p-3 mb-6 border ${
+                  {/* Quantitative Badge - Fixed Height Across All 3 Cards */}
+                  <div className={`p-3.5 mb-6 border min-h-[76px] flex flex-col justify-center ${
                     isActive
                       ? "bg-crimson-dark border-white/30 text-white"
                       : "bg-cream border-crimson/30 text-crimson"
                   }`}>
-                    <span className="text-[9px] font-mono tracking-widest uppercase block mb-0.5">KEY PERFORMANCE</span>
-                    <span className="font-display text-xl sm:text-2xl">{pillar.metric}</span>
+                    <span className="text-[9px] font-mono tracking-widest uppercase block mb-0.5 opacity-90">
+                      KEY PERFORMANCE • {pillar.metricLabel}
+                    </span>
+                    <span className="font-display text-2xl tracking-wide leading-none">{pillar.metric}</span>
                   </div>
 
-                  {/* Description */}
-                  <p className={`text-sm leading-relaxed mb-6 font-normal ${
-                    isActive ? "text-white/90" : "text-noir/80"
-                  }`}>
-                    {pillar.desc}
-                  </p>
+                  {/* Description - Minimum Height for Consistent Baseline */}
+                  <div className="min-h-[96px] mb-6">
+                    <p className={`text-sm leading-relaxed font-normal ${
+                      isActive ? "text-white/90" : "text-noir/80"
+                    }`}>
+                      {pillar.desc}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Skills tags */}
-                <div className="pt-6 border-t border-current border-opacity-20">
-                  <span className="text-[10px] font-mono font-bold tracking-widest uppercase block mb-2 opacity-80">
+                {/* Skills tags - Docked at Bottom with Exact Matching Baseline */}
+                <div className="pt-5 border-t border-current border-opacity-20 mt-auto">
+                  <span className="text-[10px] font-mono font-bold tracking-widest uppercase block mb-2.5 opacity-80">
                     DISCIPLINE EXPERTISE
                   </span>
                   <div className="flex flex-wrap gap-1.5">
@@ -131,7 +143,7 @@ export default function SamuraiPillars() {
                         key={s}
                         className={`text-[10px] px-2 py-0.5 font-medium ${
                           isActive
-                            ? "bg-white/15 text-white"
+                            ? "bg-white/15 text-white border border-white/20"
                             : "bg-crimson/10 text-crimson border border-crimson/20"
                         }`}
                       >
