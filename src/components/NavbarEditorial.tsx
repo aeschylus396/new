@@ -37,14 +37,28 @@ export default function NavbarEditorial() {
         <div className="max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 flex items-center justify-between">
           {/* Logo / Brand Mark */}
           <a href="#" className="flex items-center gap-3 group">
-            <span className="w-8 h-8 rounded-none border border-crimson flex items-center justify-center font-display text-sm tracking-wider bg-crimson text-white group-hover:bg-crimson-dark transition-colors">
+            <span
+              className={`w-8 h-8 rounded-none border flex items-center justify-center font-display text-sm tracking-wider transition-colors ${
+                scrolled
+                  ? "border-crimson bg-crimson text-white group-hover:bg-crimson-dark"
+                  : "border-white bg-white text-crimson group-hover:bg-cream"
+              }`}
+            >
               AL
             </span>
             <div className="flex flex-col">
-              <span className="font-display tracking-wider text-base sm:text-lg leading-none text-noir">
+              <span
+                className={`font-display tracking-wider text-base sm:text-lg leading-none transition-colors ${
+                  scrolled ? "text-noir" : "text-white"
+                }`}
+              >
                 AYUSH LAL
               </span>
-              <span className="text-[9px] font-bold tracking-widest text-crimson uppercase">
+              <span
+                className={`text-[9px] font-bold tracking-widest uppercase transition-colors ${
+                  scrolled ? "text-crimson" : "text-cream/90"
+                }`}
+              >
                 Digital Strategy & Growth
               </span>
             </div>
@@ -56,15 +70,29 @@ export default function NavbarEditorial() {
               <a
                 key={item.num}
                 href={item.href}
-                className="px-3 py-1.5 text-xs font-semibold tracking-wider uppercase text-noir hover:text-crimson hover:bg-crimson/5 transition-all rounded-none flex items-center gap-1.5 border border-transparent hover:border-crimson/30"
+                className={`px-3 py-1.5 text-xs font-semibold tracking-wider uppercase transition-all rounded-none flex items-center gap-1.5 border border-transparent ${
+                  scrolled
+                    ? "text-noir hover:text-crimson hover:bg-crimson/5 hover:border-crimson/30"
+                    : "text-white/90 hover:text-white hover:bg-white/10 hover:border-white/30"
+                }`}
               >
-                <span className="text-[9px] font-mono text-crimson/70">{item.num}</span>
+                <span
+                  className={`text-[9px] font-mono ${
+                    scrolled ? "text-crimson/70" : "text-cream/80"
+                  }`}
+                >
+                  {item.num}
+                </span>
                 <span>{item.label}</span>
               </a>
             ))}
             <a
               href="#contact"
-              className="ml-3 px-4 py-2 bg-crimson hover:bg-crimson-dark text-white font-display text-xs tracking-widest uppercase transition-colors shadow-sm"
+              className={`ml-3 px-4 py-2 font-display text-xs tracking-widest uppercase transition-colors shadow-sm ${
+                scrolled
+                  ? "bg-crimson hover:bg-crimson-dark text-white"
+                  : "bg-white hover:bg-cream text-crimson"
+              }`}
             >
               Let&apos;s Connect
             </a>
@@ -74,13 +102,21 @@ export default function NavbarEditorial() {
           <div className="lg:hidden flex items-center gap-2">
             <a
               href="#contact"
-              className="px-3 py-1.5 bg-crimson text-white font-display text-xs tracking-widest uppercase"
+              className={`px-3 py-1.5 font-display text-xs tracking-widest uppercase ${
+                scrolled
+                  ? "bg-crimson text-white"
+                  : "bg-white text-crimson"
+              }`}
             >
               Connect
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 border border-crimson text-crimson hover:bg-crimson hover:text-white transition-colors"
+              className={`p-2 border transition-colors ${
+                scrolled
+                  ? "border-crimson text-crimson hover:bg-crimson hover:text-white"
+                  : "border-white text-white hover:bg-white hover:text-crimson"
+              }`}
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? (

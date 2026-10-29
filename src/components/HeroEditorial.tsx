@@ -1,11 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import SamuraiHeroIllustration from "./SamuraiHeroIllustration";
+import KamonCrest from "./KamonCrest";
 
 export default function HeroEditorial() {
   return (
-    <section className="relative min-h-[92vh] sm:min-h-screen bg-crimson text-white overflow-hidden flex flex-col justify-between pt-24 sm:pt-28 pb-8 sm:pb-12 border-b-2 border-crimson-dark">
-      {/* Background Graphic Lines & Geometric Accents inspired by reference video */}
+    <section className="relative min-h-[95vh] sm:min-h-screen bg-crimson text-white overflow-hidden flex flex-col justify-between pt-24 sm:pt-28 pb-8 sm:pb-12 border-b-2 border-crimson-dark">
+      
+      {/* Background Graphic Lines & Geometric Separators from reference video */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
         <div className="absolute top-0 left-1/4 w-[1px] h-full bg-white/40" />
         <div className="absolute top-0 right-1/4 w-[1px] h-full bg-white/40" />
@@ -15,7 +18,7 @@ export default function HeroEditorial() {
 
       {/* Left Vertical Guide Rail */}
       <div className="hidden lg:flex absolute left-6 top-1/2 -translate-y-1/2 flex-col items-center gap-6 z-20 pointer-events-none">
-        <span className="rail-label text-white/80">AYUSH LAL • DIGITAL STRATEGY</span>
+        <span className="rail-label text-white/80">武士道 • AYUSH LAL • DIGITAL STRATEGY</span>
         <div className="w-[1px] h-16 bg-white/40" />
         <span className="font-mono text-[10px] text-white/70">01 / 07</span>
       </div>
@@ -24,7 +27,7 @@ export default function HeroEditorial() {
       <div className="hidden lg:flex absolute right-6 top-1/2 -translate-y-1/2 flex-col items-center gap-6 z-20 pointer-events-none">
         <span className="font-mono text-[10px] text-white/70">BIMTECH 2026–2028</span>
         <div className="w-[1px] h-16 bg-white/40" />
-        <span className="rail-label text-white/80">PORTFOLIO OF LEADERSHIP</span>
+        <span className="rail-label text-white/80">SAMURAI STRATEGIC DISCIPLINE</span>
       </div>
 
       {/* Central Content Container */}
@@ -37,36 +40,37 @@ export default function HeroEditorial() {
           transition={{ duration: 0.6 }}
           className="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-6 border-b border-white/20 pb-3"
         >
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-cream animate-pulse" />
+          <div className="flex items-center gap-3">
+            <KamonCrest type="oda" size={22} color="#FFFFFF" />
             <span className="font-mono text-[11px] sm:text-xs tracking-widest uppercase font-semibold text-cream">
-              [ EDITION 2026 • PORTFOLIO CATALOG ]
+              [ SAMURAI DISCIPLINE • DIGITAL STRATEGY & GROWTH ]
             </span>
           </div>
           <span className="text-[10px] sm:text-xs font-mono tracking-wider text-white/80 uppercase">
-            PGDM CANDIDATE • SALES & MARKETING STRATEGIST
+            PGDM CANDIDATE • SALES ARCHITECT • 2026
           </span>
         </motion.div>
 
-        {/* Main Hero Typography & Visual Composition */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto py-4">
+        {/* Main Hero Composition: Oversized Headline + Samurai Illustration */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto py-2 sm:py-4">
           
           {/* Typography Column */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className="lg:col-span-6 xl:col-span-7 flex flex-col justify-center">
+            
             <motion.p
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xs sm:text-sm font-bold tracking-[0.3em] uppercase text-cream/90 mb-2"
+              className="text-xs sm:text-sm font-bold tracking-[0.3em] uppercase text-cream/90 mb-2 flex items-center gap-2"
             >
-              Creative Leader & Growth Architect
+              <span>⚔</span> Creative Leader & Sales Strategist
             </motion.p>
 
             <motion.h1
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="font-display text-6xl sm:text-8xl md:text-9xl xl:text-[11rem] leading-[0.88] tracking-tight uppercase text-white drop-shadow-md"
+              className="font-display text-6xl sm:text-8xl md:text-9xl xl:text-[11rem] leading-[0.88] tracking-tight uppercase text-white drop-shadow-lg"
             >
               AYUSH<br />
               <span className="text-cream underline decoration-white/20 decoration-2 underline-offset-8">LAL</span>
@@ -76,9 +80,9 @@ export default function HeroEditorial() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-sm sm:text-base md:text-lg text-white/90 max-w-xl font-normal leading-relaxed mt-4 sm:mt-6"
+              className="text-sm sm:text-base md:text-lg text-white/95 max-w-xl font-normal leading-relaxed mt-4 sm:mt-6"
             >
-              Turning strategy into scalable growth through high-converting campaigns, engaging creative storytelling, and data-driven customer acquisition.
+              Turning strategy into scalable growth through high-converting campaigns, engaging visual storytelling, and data-driven customer acquisition.
             </motion.p>
 
             {/* Quick CTAs */}
@@ -107,31 +111,31 @@ export default function HeroEditorial() {
             </motion.div>
           </div>
 
-          {/* Focal Visual Column - Portrait in signature editorial notched frame */}
+          {/* Samurai Character Illustration Column (Replacing personal photo) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-5 flex justify-center lg:justify-end"
+            className="lg:col-span-6 xl:col-span-5 flex justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-[340px] sm:max-w-[400px]">
+            <div className="relative w-full max-w-[420px] sm:max-w-[500px]">
               
-              {/* Notched outer frame */}
-              <div className="editorial-frame p-2 sm:p-3 bg-cream shadow-editorial-dark border-2 border-white">
-                <div className="relative aspect-[4/5] overflow-hidden bg-noir">
-                  <img
-                    src="/poster.jpg"
-                    alt="Ayush Lal"
-                    className="w-full h-full object-cover object-top filter contrast-[1.05]"
-                  />
-                  {/* Subtle graphic overlay badge */}
-                  <div className="absolute bottom-3 left-3 right-3 p-3 bg-noir/80 backdrop-blur-sm border border-crimson/50 text-white flex items-center justify-between">
+              {/* Notched outer frame with corner brackets */}
+              <div className="editorial-frame p-3 sm:p-5 bg-crimson-dark border-2 border-white shadow-editorial-dark relative">
+                
+                {/* Embedded Stylized Samurai Illustration */}
+                <SamuraiHeroIllustration />
+
+                {/* Bottom Graphic Badge */}
+                <div className="absolute bottom-4 left-4 right-4 p-3 bg-noir/90 backdrop-blur-sm border border-crimson text-white flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <KamonCrest type="sword" size={24} color="#F20D3A" />
                     <div>
-                      <p className="text-[9px] font-mono tracking-widest uppercase text-crimson font-bold">PORTFOLIO SUBJECT</p>
-                      <p className="font-display tracking-wider text-sm sm:text-base text-cream">AYUSH LAL</p>
+                      <p className="text-[9px] font-mono tracking-widest uppercase text-crimson font-bold">WARRIOR DISCIPLINE</p>
+                      <p className="font-display tracking-wider text-sm sm:text-base text-cream">STRATEGIC MASTERY</p>
                     </div>
-                    <span className="font-mono text-xs text-white/70">2026</span>
                   </div>
+                  <span className="font-mono text-xs text-white/70">2026</span>
                 </div>
               </div>
 

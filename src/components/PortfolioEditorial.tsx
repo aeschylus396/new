@@ -2,6 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import KamonCrest from "./KamonCrest";
+import KatanaDivider from "./KatanaDivider";
+import SamuraiPillars from "./SamuraiPillars";
 
 interface PortfolioItem {
   id: number;
@@ -126,7 +129,7 @@ export default function PortfolioEditorial() {
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
 
-  // Expandable timeline rows state (inspired by the reference video)
+  // Expandable timeline rows state
   const [expandedRow, setExpandedRow] = useState<string | null>("experience-1");
 
   const toggleRow = (id: string) => {
@@ -219,16 +222,14 @@ export default function PortfolioEditorial() {
           {/* Signature Notched Editorial Card (Inspired by Frame 1 & Frame 2) */}
           <div className="editorial-frame p-6 sm:p-10 md:p-14 bg-cream-light border-2 border-crimson relative">
             
-            {/* Top Emblem */}
+            {/* Top Kamon Crest Emblem */}
             <div className="flex justify-center mb-8">
-              <div className="w-14 h-14 border border-crimson rounded-full flex items-center justify-center p-2 bg-crimson/5">
-                <div className="w-full h-full rounded-full border border-crimson flex items-center justify-center font-display text-crimson text-lg">
-                  AL
-                </div>
+              <div className="p-3 border border-crimson rounded-full bg-crimson/5">
+                <KamonCrest type="oda" size={48} color="#F20D3A" />
               </div>
             </div>
 
-            {/* Main Headline */}
+            {/* Main Statement */}
             <h2 className="font-display text-3xl sm:text-5xl md:text-6xl text-center text-crimson leading-[1.05] tracking-tight uppercase max-w-4xl mx-auto mb-8">
               AYUSH LAL IS A PGDM CANDIDATE AT BIMTECH SPECIALIZING IN <span className="text-noir underline decoration-crimson decoration-2">DIGITAL MARKETING AND SALES STRATEGY</span>
             </h2>
@@ -294,6 +295,9 @@ export default function PortfolioEditorial() {
         </div>
       </section>
 
+      {/* Katana Section Divider */}
+      <KatanaDivider theme="red-on-cream" />
+
       {/* ════════════════════════════════════════════════════════════════
           CHAPTER 02: STRATEGIC METHODOLOGY (NOIR & CRIMSON TRANSITION)
          ════════════════════════════════════════════════════════════════ */}
@@ -304,7 +308,7 @@ export default function PortfolioEditorial() {
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs font-bold text-crimson uppercase tracking-widest">[ CHAPTER 02 ]</span>
               <span className="w-8 h-[1px] bg-crimson" />
-              <span className="text-xs font-bold tracking-widest uppercase text-cream/80">STRATEGIC FRAMEWORK</span>
+              <span className="text-xs font-bold tracking-widest uppercase text-cream/80">STRATEGIC BATTLE MAP</span>
             </div>
             <span className="font-mono text-xs text-crimson font-bold">03 / 07</span>
           </div>
@@ -327,7 +331,7 @@ export default function PortfolioEditorial() {
               { num: "02", title: "STRATEGIZE", desc: "Positioning + Channel + Message", detail: "Hyperlocal targeting, channel selection, and high-impact value proposition." },
               { num: "03", title: "CREATE", desc: "Content + Design + Campaign", detail: "Visual storytelling, persuasive copywriting, and short-form video reels." },
               { num: "04", title: "MEASURE", desc: "Reach + Engagement + Conversion", detail: "Conversion rate optimization, sales analytics, and ROI scaling." },
-            ].map((step, i) => (
+            ].map((step) => (
               <div
                 key={step.num}
                 className="editorial-frame-noir p-6 sm:p-8 border border-crimson/30 hover:border-crimson transition-all group"
@@ -336,7 +340,7 @@ export default function PortfolioEditorial() {
                   <span className="font-display text-4xl sm:text-5xl text-crimson group-hover:scale-105 transition-transform">
                     {step.num}
                   </span>
-                  <span className="w-2.5 h-2.5 bg-crimson" />
+                  <KamonCrest type="sword" size={24} color="#F20D3A" />
                 </div>
                 <h3 className="font-display text-2xl text-white tracking-wider uppercase mb-2">
                   {step.title}
@@ -355,28 +359,33 @@ export default function PortfolioEditorial() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
-          CHAPTER 03: PROFESSIONAL EXPERIENCE & INTERACTIVE TIMELINE
-          (Inspired by Frame 5 & 7 Expandable Rows with Red Highlight)
+          THE THREE PILLARS (Inspired by the Three Unifiers Frame 9, 20 & 27)
          ════════════════════════════════════════════════════════════════ */}
-      <section id="experience" className="py-20 sm:py-28 px-4 sm:px-8 md:px-16 border-b border-crimson/30 relative">
+      <SamuraiPillars />
+
+      {/* ════════════════════════════════════════════════════════════════
+          CHAPTER 03: PIVOTAL CAREER TIMELINE & EXPANDABLE ROWS
+          (Inspired by Frame 5 & 15 Expandable Rows with Red Highlight)
+         ════════════════════════════════════════════════════════════════ */}
+      <section id="experience" className="py-20 sm:py-28 px-4 sm:px-8 md:px-16 border-b border-crimson/30 relative bg-cream-light">
         <div className="max-w-[1400px] mx-auto">
           
           <div className="flex items-center justify-between border-b border-crimson/30 pb-4 mb-12">
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs font-bold text-crimson uppercase tracking-widest">[ CHAPTER 03 ]</span>
               <span className="w-8 h-[1px] bg-crimson" />
-              <span className="text-xs font-bold tracking-widest uppercase text-noir/80">PIVOTAL CAREER TIMELINE</span>
+              <span className="text-xs font-bold tracking-widest uppercase text-noir/80">PIVOTAL CAREER CHRONICLE</span>
             </div>
             <span className="font-mono text-xs text-crimson font-bold">04 / 07</span>
           </div>
 
           <div className="text-center mb-16">
-            <p className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-crimson mb-2">PROVEN TRACK RECORD</p>
+            <p className="text-xs font-mono font-bold tracking-[0.3em] uppercase text-crimson mb-2">VERIFIED ENGAGEMENTS</p>
             <h2 className="font-display text-5xl sm:text-7xl md:text-8xl text-noir tracking-tight uppercase">
               EXPERIENCE
             </h2>
             <p className="text-sm sm:text-base text-noir/75 max-w-xl mx-auto mt-4 font-normal">
-              Click on each timeline entry below to expand verified responsibilities, quantitative metrics, and sales pipelines.
+              Click on each timeline entry below to expand tactical mandates, quantitative revenue metrics, and sales pipelines.
             </p>
           </div>
 
@@ -388,7 +397,7 @@ export default function PortfolioEditorial() {
               <button
                 onClick={() => toggleRow("experience-1")}
                 className={`w-full p-5 sm:p-7 flex items-center justify-between transition-colors text-left ${
-                  expandedRow === "experience-1" ? "bg-crimson text-white" : "bg-cream-light text-noir hover:bg-crimson/5"
+                  expandedRow === "experience-1" ? "bg-crimson text-white" : "bg-cream text-noir hover:bg-crimson/5"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-8">
@@ -429,7 +438,7 @@ export default function PortfolioEditorial() {
                       </p>
                     </div>
 
-                    {/* Quantitative Achievement Band */}
+                    {/* Quantitative Achievement Band (Frame 15 Style) */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 bg-crimson text-white border border-crimson-dark">
                       <div>
                         <span className="text-[10px] font-mono tracking-widest uppercase text-cream/90 block">QUALIFIED LEADS</span>
@@ -485,12 +494,12 @@ export default function PortfolioEditorial() {
               </AnimatePresence>
             </div>
 
-            {/* ROW 2: Academic Timeline */}
+            {/* ROW 2: Academic Milestone */}
             <div className="editorial-frame border border-crimson/40 overflow-hidden transition-all">
               <button
                 onClick={() => toggleRow("experience-2")}
                 className={`w-full p-5 sm:p-7 flex items-center justify-between transition-colors text-left ${
-                  expandedRow === "experience-2" ? "bg-crimson text-white" : "bg-cream-light text-noir hover:bg-crimson/5"
+                  expandedRow === "experience-2" ? "bg-crimson text-white" : "bg-cream text-noir hover:bg-crimson/5"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-8">
@@ -563,7 +572,7 @@ export default function PortfolioEditorial() {
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs font-bold text-crimson uppercase tracking-widest">[ CHAPTER 04 ]</span>
               <span className="w-8 h-[1px] bg-crimson" />
-              <span className="text-xs font-bold tracking-widest uppercase text-cream/80">STRATEGIC CASE STUDIES</span>
+              <span className="text-xs font-bold tracking-widest uppercase text-cream/80">STRATEGIC ENGAGEMENTS</span>
             </div>
             <span className="font-mono text-xs text-crimson font-bold">05 / 07</span>
           </div>
@@ -914,7 +923,7 @@ export default function PortfolioEditorial() {
             <div className="flex items-center gap-3">
               <span className="font-mono text-xs font-bold text-crimson uppercase tracking-widest">[ CHAPTER 06 ]</span>
               <span className="w-8 h-[1px] bg-crimson" />
-              <span className="text-xs font-bold tracking-widest uppercase text-noir/80">LEADERSHIP & RECOGNITION</span>
+              <span className="text-xs font-bold tracking-widest uppercase text-noir/80">HONORS & LEADERSHIP</span>
             </div>
             <span className="font-mono text-xs text-crimson font-bold">07 / 07</span>
           </div>
@@ -923,9 +932,13 @@ export default function PortfolioEditorial() {
             
             {/* Leadership Box */}
             <div className="editorial-frame p-8 sm:p-10 border-2 border-crimson bg-cream-light">
-              <span className="text-xs font-mono font-bold tracking-widest text-crimson uppercase block mb-3">
-                [ CLUB & CAMPUS ROLES ]
-              </span>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-mono font-bold tracking-widest text-crimson uppercase">
+                  [ CAMPUS ORGANIZATIONS ]
+                </span>
+                <KamonCrest type="oda" size={32} color="#F20D3A" />
+              </div>
+
               <h3 className="font-display text-4xl text-noir tracking-tight uppercase mb-8">
                 LEADERSHIP
               </h3>
@@ -963,9 +976,13 @@ export default function PortfolioEditorial() {
 
             {/* Achievements Box */}
             <div className="editorial-frame p-8 sm:p-10 border-2 border-crimson bg-cream-light">
-              <span className="text-xs font-mono font-bold tracking-widest text-crimson uppercase block mb-3">
-                [ COMPETITIVE HONORS ]
-              </span>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-mono font-bold tracking-widest text-crimson uppercase">
+                  [ COMPETITIVE HONORS ]
+                </span>
+                <KamonCrest type="tokugawa" size={32} color="#F20D3A" />
+              </div>
+
               <h3 className="font-display text-4xl text-noir tracking-tight uppercase mb-8">
                 ACHIEVEMENTS
               </h3>
@@ -1027,9 +1044,12 @@ export default function PortfolioEditorial() {
               { title: "TOOLS & SOFTWARE", items: ["MS Excel & PPT", "Google Analytics", "Google Ads", "Meta Ads Manager", "Canva", "CRM Systems"] }
             ].map((group, idx) => (
               <div key={idx} className="editorial-frame p-6 sm:p-8 border border-crimson/40 bg-cream">
-                <h4 className="font-display text-2xl text-noir tracking-wide uppercase mb-4 pb-2 border-b border-crimson/30">
-                  {group.title}
-                </h4>
+                <div className="flex items-center justify-between mb-4 pb-2 border-b border-crimson/30">
+                  <h4 className="font-display text-2xl text-noir tracking-wide uppercase">
+                    {group.title}
+                  </h4>
+                  <KamonCrest type="sword" size={18} color="#F20D3A" />
+                </div>
                 <ul className="space-y-2.5">
                   {group.items.map(item => (
                     <li key={item} className="flex items-center gap-2.5 text-xs font-semibold text-noir/85">
@@ -1059,6 +1079,10 @@ export default function PortfolioEditorial() {
 
         <div className="max-w-[1200px] mx-auto text-center relative z-10">
           
+          <div className="flex justify-center mb-6">
+            <KamonCrest type="oda" size={44} color="#FFFFFF" />
+          </div>
+
           <span className="editorial-chip-light mb-6 inline-block">
             [ FINAL CHAPTER • LET&apos;S COLLABORATE ]
           </span>
@@ -1071,7 +1095,7 @@ export default function PortfolioEditorial() {
             Open to opportunities and strategic conversations around digital marketing, sales leadership, business development, and creative content.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-5xl mx-auto mb-4">
             <a
               href="mailto:ayush.lal28@bimtech.ac.in"
               className="p-5 bg-crimson-dark border border-white/30 hover:bg-white hover:text-crimson transition-all text-left group"
@@ -1104,7 +1128,35 @@ export default function PortfolioEditorial() {
               <p className="font-display text-xl sm:text-2xl text-white group-hover:text-crimson">
                 LINKEDIN
               </p>
-              <span className="text-xs text-cream/70 mt-2 block">Connect ↗</span>
+              <span className="text-xs text-cream/70 mt-2 block">Connect Profile ↗</span>
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-5xl mx-auto mb-12">
+            <a
+              href="https://www.instagram.com/digimarkglobals/"
+              target="_blank"
+              rel="noreferrer"
+              className="p-5 bg-crimson-dark border border-white/30 hover:bg-white hover:text-crimson transition-all text-left group"
+            >
+              <span className="text-[10px] font-mono text-cream uppercase block mb-1">DIGIMARK GLOBALS • INSTAGRAM</span>
+              <p className="font-display text-xl sm:text-2xl text-white group-hover:text-crimson">
+                @DIGIMARKGLOBALS
+              </p>
+              <span className="text-xs text-cream/70 mt-2 block">View Agency Works ↗</span>
+            </a>
+
+            <a
+              href="https://www.instagram.com/ecell_bimtech/"
+              target="_blank"
+              rel="noreferrer"
+              className="p-5 bg-crimson-dark border border-white/30 hover:bg-white hover:text-crimson transition-all text-left group"
+            >
+              <span className="text-[10px] font-mono text-cream uppercase block mb-1">E-CELL BIMTECH • INSTAGRAM</span>
+              <p className="font-display text-xl sm:text-2xl text-white group-hover:text-crimson">
+                @ECELL_BIMTECH
+              </p>
+              <span className="text-xs text-cream/70 mt-2 block">View Campus Initiative ↗</span>
             </a>
           </div>
 
@@ -1121,7 +1173,7 @@ export default function PortfolioEditorial() {
         {/* Bottom Copyright & Colophon */}
         <div className="mt-20 pt-8 border-t border-white/20 max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-white/70 font-mono">
           <span>AYUSH LAL © 2026 • ALL RIGHTS RESERVED</span>
-          <span className="mt-2 sm:mt-0">DESIGNED WITH RED & CREAM EDITORIAL IDENTITY</span>
+          <span className="mt-2 sm:mt-0">DESIGNED WITH RED & CREAM SAMURAI EDITORIAL IDENTITY</span>
         </div>
 
       </section>
